@@ -1,0 +1,21 @@
+
+<shared-user-conteiner [titulo]=" titulo "></shared-user-conteiner>
+<div class="container">
+    <div class="containr-form">
+        <form-user 
+            (updateUserEvent)="userNewUpdate($event)"
+            (addUserFomr)="aggUser($event)" 
+            [userByUp]="userUpdate"   >
+        </form-user>
+    </div>
+
+    <div class="container-table">
+            <list-user  
+                [personList]="userList" 
+                (oneDelete)="ondeleteUser($event)"
+                (userUpdate)="byuserUpdateCharacter($event)"
+                (searchUserId)="searchUserByID($event)"
+            ></list-user>
+       
+    </div>
+</div>

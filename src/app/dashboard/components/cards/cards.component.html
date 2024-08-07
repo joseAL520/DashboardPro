@@ -1,0 +1,44 @@
+<div class="container-cards">
+
+    <div class="card card-card1">
+        <strong>
+            precio total de Productos
+        </strong>
+        <div class="line"> </div>
+        <span class="card-inf priceTotalProduct">
+            {{ priceTotalProduc | currencyFormatCop }}
+        </span>
+    </div>
+    
+    <div class="card card-card2">
+        <strong>
+           Usuarios Registrados
+        </strong>
+        <div class="line"> </div>
+        <span class="card-inf">
+            {{ user$ }}
+        </span>
+    </div>
+    
+    <div class="card card-card3">
+        <strong>
+            Total de productos
+        </strong>
+        <div class="line"> </div>
+        <span class="card-inf">
+            {{ totalProduct$ }}
+        </span>
+        
+    </div>
+    
+    <!-- <div class="card card-card4">
+        <strong>
+            perdida
+        </strong>
+        <div class="line"></div>
+
+        <span class="card-inf">
+            {{ user$ }}
+        </span>
+    </div> -->
+</div>

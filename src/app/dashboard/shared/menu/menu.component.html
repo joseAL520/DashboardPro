@@ -1,0 +1,31 @@
+<header class="header-contaner">
+
+       <div class="container_info">
+           <h2>Empresa</h2>
+           <br>
+           <div class="user__container">
+                <img 
+                class="icon-user"
+                src="https://img.freepik.com/foto-gratis/hombre-guapo-piel-brillante-posando_23-2149396129.jpg" 
+                alt="ico-user">
+
+                <span class="title_name">Jose angel Alvarez</span>
+                <span class="subtitle">Desarrolador Web</span>
+        </div>
+       </div> 
+       
+        <input type="checkbox" id="dropdown-toggle" class="dropdown-toggle">
+        <label for="dropdown-toggle" class="dropdown-button"> <img src="https://cdn.icon-icons.com/icons2/916/PNG/512/Menu_icon_icon-icons.com_71858.png" alt="icon" style="width: 45px; height: 40px;"> </label>
+        <div class="cotainer-menu">
+            @for (item of menuItems; track $index) {
+                <ul>
+    
+                   <li
+                   [routerLink]=" [item.route]"
+                   routerLinkActive="active" 
+                   onclick="document.getElementById('dropdown-toggle').checked = false"
+                   > <img [src]="item.icon" alt="icon"> <span class="tittle"> {{ item.title }} </span> </li>
+                </ul>
+            }
+        </div>
+</header>

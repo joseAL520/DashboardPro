@@ -1,0 +1,89 @@
+
+<div class="container">
+    
+    <form [formGroup]="myFom"  (keyup)="searchUser()"  >
+        <input type="text" class="search-user" placeholder="Buscar usuario por ID" formControlName="idBuscador">
+    </form>
+    
+<table >
+    <thead>
+        <tr>
+            <th class="control-table control-table-number" >#</th>
+            <th class="control-table control-table-nombre " >Nombres y apellidos</th>
+            <th class="control-table control-table-marca" >dirreccion</th>
+            <th class="control-table control-table-provedor" >correo</th>
+            <th class="control-table control-table-categoria" >numero</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tr *ngFor="let person of personList.slice(currentIndex,currentIndex + pageSize); let i=index">
+        <td class="column_index" >{{ currentIndex +  i + 1 }}</td>
+        <td class="column_nombre" >{{ person.nombre | uppercase }} </td>
+        <td class="column_direccion" >{{ person.direccion }}</td>
+        <td class="column_correo" >{{ person.correo }} </td>
+        <td class="column_numero" >{{ person.numero }}</td>
+        <td>
+            <button 
+                class="btn-danger"
+                (click)="onDeleterUser(person.id)"
+            > 
+                <img 
+                src="https://cdn-icons-png.flaticon.com/512/4914/4914888.png" 
+                width="15px"
+                height="15px"
+                alt="icon"> 
+            </button>
+        </td>  
+        <td>
+            <button 
+                class="btn-update" 
+                (click)="updateUserById( person )"
+            > 
+                <img 
+                    src="https://cdn-icons-png.flaticon.com/512/2830/2830022.png" 
+                    width="15px"
+                    height="15px"
+                    alt="icon">
+            </button>
+        </td>   
+        <td>
+            <button 
+                class="btn-info" 
+                (click)="openModalInfo(person)"
+            > 
+                <img 
+                    src="https://cdn-icons-png.flaticon.com/512/32/32175.png" 
+                    width="15px"
+                    height="15px"
+                    alt="icon">
+            </button>
+        </td>    
+    </tr>
+  
+   </table> 
+    <hr>
+   <div class="container-btn">
+        
+        <button 
+            class="control-btn"
+            (click)="previous()"
+            [disabled]="currentIndex === 0"
+        >
+        <img class="control-rotate" src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="icon">
+        </button>
+
+        <button 
+            class="control-btn"
+            (click)="next()"
+            [disabled]="currentIndex + pageSize >= personList.length"
+        >
+        <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="icon">
+        </button>
+   </div>
+</div>
+
+
+<app-window-modal  *ngIf="isModalOpen" (closeModal)="closeModalInfo()" [infoForModal]="infoModal "></app-window-modal>
